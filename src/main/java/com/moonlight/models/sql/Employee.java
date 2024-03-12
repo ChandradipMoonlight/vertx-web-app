@@ -16,7 +16,7 @@ import javax.persistence.Id;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
-public class Employee extends Model {
+public class Employee extends BaseModel {
 	@Id
 	private Integer employeeId;
 	private String employeeName;

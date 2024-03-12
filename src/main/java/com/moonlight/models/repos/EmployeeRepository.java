@@ -16,4 +16,8 @@ public enum EmployeeRepository {
 	public List<Employee> findAll() {
 		return employeeFinder.findAll();
 	}
+
+	public void save(Employee employee) {
+
+	}
 }

@@ -1,9 +1,11 @@
 package com.moonlight.controller;
 
+import com.moonlight.models.repos.EmployeeRepository;
 import com.moonlight.models.repos.InMemoryEmployeeRepo;
 import com.moonlight.models.sql.Employee;
 import com.moonlight.utils.ResponseUtils;
 import io.netty.handler.codec.http.HttpResponseStatus;
+import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.RoutingContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,8 +19,9 @@ public enum GetAllEmployeeController implements CommonController{
 
 	@Override
 	public void handle(RoutingContext context) {
-		List<Employee> allEmployee = InMemoryEmployeeRepo.INSTANCE.findAll();
-		logger.info("All Employee : {}", allEmployee);
+//		List<Employee> allEmployee = InMemoryEmployeeRepo.INSTANCE.findAll();
+		List<Employee> allEmployee = EmployeeRepository.INSTANCE.findAll();
+		logger.info("All Employee : {}", JsonObject.mapFrom(allEmployee));
 		if (allEmployee.isEmpty()) {
 			ResponseUtils.INSTANCE.writeJsonErrorResponse(context, "fail", HttpResponseStatus.NOT_FOUND.code());
 		}

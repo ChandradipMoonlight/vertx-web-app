@@ -30,4 +30,5 @@ public class SqlFinder<T, I> {
 		return query().findList();
 	}
 
+
 }

@@ -1,5 +1,6 @@
 package com.moonlight.controller;
 
+import com.moonlight.models.repos.EmployeeRepository;
 import com.moonlight.models.repos.InMemoryEmployeeRepo;
 import com.moonlight.models.sql.Employee;
 import com.moonlight.utils.ResponseUtils;
@@ -13,7 +14,8 @@ public enum GetEmployeeController implements CommonController {
 	@Override
 	public void handle(RoutingContext context) {
 		Integer employeeId = Integer.valueOf(context.pathParam("employeeId"));
-		Optional<Employee> employee = InMemoryEmployeeRepo.INSTANCE.findById(employeeId);
+//		Optional<Employee> employee = InMemoryEmployeeRepo.INSTANCE.findById(employeeId);
+		Optional<Employee> employee = Optional.ofNullable(EmployeeRepository.INSTANCE.findById(employeeId));
 		if (employee.isPresent()) {
 			ResponseUtils.INSTANCE.writeJsonResponse(context, employee.get(), "success");
 		} else {

@@ -1,6 +1,7 @@
 package com.moonlight.factory;
 
 import com.moonlight.config.ConfigHelper;
+import com.moonlight.models.sql.BaseModel;
 import io.ebean.Database;
 import io.ebean.DatabaseFactory;
 import io.ebean.config.DatabaseConfig;
@@ -44,5 +45,26 @@ public enum SqlBeanFactory {
 		dbConfig.addPackage("models.sql");
 		return DatabaseFactory.create(dbConfig);
 	}
+	public void save(BaseModel baseModel) {
+		saveBean(baseModel);
+	}
 
+	public void update(BaseModel baseModel) {
+		updateBean(baseModel);
+	}
+
+	public void delete(BaseModel baseModel) {
+		deleteBean(baseModel);
+	}
+	public void saveBean(Object o) {
+		dbConnection().save(o);
+	}
+
+	public void updateBean(Object o) {
+		dbConnection().update(o);
+	}
+
+	public void deleteBean(Object o) {
+		 dbConnection().delete(o);
+	}
 }
