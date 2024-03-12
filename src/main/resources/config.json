@@ -1,0 +1,12 @@
+{
+  "environment" : "development",
+  "port" : 8888,
+  "sql" : {
+    "port": 3306,
+    "driver": "com.mysql.cj.jdbc.Driver",
+    "username": "root",
+//    "url": "jdbc:mysql://localhost/testDB?useSSL=false",
+    "url": "jdbc:mysql://localhost/testDB",
+    "password": "Dipak@11"
+  }
+}
