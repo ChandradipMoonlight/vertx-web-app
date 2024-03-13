@@ -2,9 +2,12 @@ package com.moonlight.factory;
 
 import com.moonlight.config.ConfigHelper;
 import com.moonlight.models.sql.BaseModel;
+import com.moonlight.models.sql.Employee;
 import io.ebean.Database;
 import io.ebean.DatabaseFactory;
 import io.ebean.config.DatabaseConfig;
+import io.ebean.config.dbplatform.mysql.MySql55Platform;
+import io.ebean.config.dbplatform.mysql.MySqlPlatform;
 import io.ebean.datasource.DataSourceConfig;
 import io.vertx.core.json.JsonObject;
 import org.slf4j.Logger;
@@ -23,8 +26,24 @@ public enum SqlBeanFactory {
 		config.setUrl(jsonObject.getString("url"));
 		config.setUsername(jsonObject.getString("username"));
 		config.setPassword(jsonObject.getString("password"));
-		logger.info("DataSourceConfig : {}", config);
+		logger.info("DataSourceConfig : {}", JsonObject.mapFrom(config).encodePrettily());
 		return config;
+	}
+
+	public Database dbConnection() {
+		DatabaseConfig dbConfig = new DatabaseConfig();
+		dbConfig.setDataSourceConfig(getDataSourceConfig());
+
+		dbConfig.setDdlGenerate(true);
+		dbConfig.setDdlRun(true);
+		dbConfig.setDefaultServer(true);
+//		dbConfig.setDdlCreateOnly(true);
+
+		dbConfig.addPackage("com.moonlight.models.sql");
+//		dbConfig.addClass(Employee.class);
+		dbConfig.setRegister(true);
+		dbConfig.setDatabasePlatform(new MySqlPlatform());
+		return DatabaseFactory.create(dbConfig);
 	}
 
 	public void init() {
@@ -34,17 +53,6 @@ public enum SqlBeanFactory {
 		dbConnection().shutdown();
 	}
 
-	public Database dbConnection() {
-		DatabaseConfig dbConfig = new DatabaseConfig();
-		dbConfig.setDataSourceConfig(getDataSourceConfig());
-		dbConfig.setDdlGenerate(true);
-
-//		dbConfig.setDefaultServer(true);
-//		dbConfig.setDdlCreateOnly(true);
-//		dbConfig.setDdlRun(true);
-		dbConfig.addPackage("models.sql");
-		return DatabaseFactory.create(dbConfig);
-	}
 	public void save(BaseModel baseModel) {
 		saveBean(baseModel);
 	}

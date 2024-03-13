@@ -1,7 +1,6 @@
 package com.moonlight.models.repos;
 
 import com.moonlight.factory.SqlBeanFactory;
-import io.ebean.DB;
 import io.ebean.Database;
 import io.ebean.Query;
 

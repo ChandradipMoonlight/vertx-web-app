@@ -17,6 +17,8 @@ import javafx.application.Application;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.concurrent.CompletableFuture;
+
 public class MainVerticle extends AbstractVerticle {
 
   private static final Logger log = LoggerFactory.getLogger(MainVerticle.class);
@@ -45,18 +47,21 @@ public class MainVerticle extends AbstractVerticle {
                   log.info("Deployed {} with Id {}", HttpRoutes.class.getSimpleName(), completionHandler);
                   startPromise.complete();
                 } else {
-                  log.error("Error :: {}", completionHandler.cause());
+                  log.error("Error in starting {} :: {}", HttpRoutes.class.getName(), completionHandler.cause());
                 }
               });
-    SqlBeanFactory.INSTANCE.init();
+    CompletableFuture.supplyAsync(() -> {
+      try {
+        SqlBeanFactory.INSTANCE.init();
+      }catch (Exception e) {
+        log.error("Error in initiating MySQL : {}", e.getMessage());
+      }
+      return null;
+    });
   }
 
   private int getProcessors() {
     return Math.max(1, Runtime.getRuntime().availableProcessors());
   }
 
-  @Override
-  public void stop() throws Exception {
-    SqlBeanFactory.INSTANCE.stop();
-  }
 }

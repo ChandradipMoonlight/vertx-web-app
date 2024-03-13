@@ -1,15 +1,18 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import org.gradle.api.tasks.testing.logging.TestLogEvent.*
+import org.gradle.internal.impldep.com.fasterxml.jackson.core.JsonPointer.compile
 
 plugins {
   java
   application
   id("com.github.johnrengelman.shadow") version "7.1.2"
   id("io.spring.dependency-management") version "1.0.1.RELEASE"
+  id("io.ebean") version "12.7.2"
 }
 
 group = "com.moonlight"
 version = "1.0.0-SNAPSHOT"
+apply(plugin = "io.ebean")
 
 repositories {
   mavenCentral()
@@ -52,6 +55,10 @@ dependencies {
   implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
   implementation("com.mysql:mysql-connector-j:8.3.0")
   implementation("io.ebean:ebean:12.7.2")
+//  compile("io.ebean:ebean:12.7.2")
+  // query bean generation
+//  annotationProcessor("io.ebean:querybean-generator:11.27.1")
+//  testCompileOnly("io.ebean:ebean-test:12.7.2")
 }
 
 java {
@@ -77,7 +84,3 @@ tasks.withType<Test> {
 tasks.withType<JavaExec> {
   args = listOf("run", mainVerticleName, "-conf /Users/macbook/workspace/pratice/vertx-web-app/src/main/resources/config.json","--redeploy=$watchForChange", "--launcher-class=$launcherClassName", "--on-redeploy=$doOnChange")
 }
-
-//run {
-//  args = ["run", mainVerticleName, "-conf /Users/macbook/workspace/pratice/vertx-web-app/src/main/resources/development/config.json","--redeploy=$watchForChange", "--launcher-class=$mainClassName", "--on-redeploy=$doOnChange"]
-//}

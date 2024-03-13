@@ -18,17 +18,15 @@ public enum AddEmployeeController implements CommonController{
 	public void handle(RoutingContext context) {
 
 		try {
-			logger.info("request : {}", context.getBody());
 			JsonObject employeeJson = context.getBodyAsJson();
 			logger.info("Employee Json Request : {}", employeeJson.encodePrettily());
 			Employee employee = employeeJson.mapTo(Employee.class);
 //			Employee save = InMemoryEmployeeRepo.INSTANCE.save(employee);
 			employee.save();
-			Employee save = employee;
-
-			ResponseUtils.INSTANCE.writeJsonResponse(context, save, "success");
-			logger.info("Response : {}", JsonObject.mapFrom(save).encodePrettily());
+			ResponseUtils.INSTANCE.writeJsonResponse(context, employee, "success");
+			logger.info("Response : {}", JsonObject.mapFrom(employee).encodePrettily());
 		} catch (Exception e) {
+			ResponseUtils.INSTANCE.writeJsonErrorResponse(context, e.getMessage(), 500);
 			logger.error("Error : {}", e.getMessage());
 			e.printStackTrace();
 		}

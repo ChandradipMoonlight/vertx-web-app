@@ -47,7 +47,7 @@ public enum ResponseUtils {
 			context.response()
 					.putHeader(HttpHeaders.CONTENT_TYPE, HttpHeaderValues.APPLICATION_JSON)
 					.setStatusCode(statusCode)
-					.end(new JsonObject().put("message", message).encode());
+					.end(new JsonObject().put("message", message).put("statusCode", statusCode).encode());
 		} catch (Exception e) {
 			logger.info("Error : {}", e.getMessage());
 		}
