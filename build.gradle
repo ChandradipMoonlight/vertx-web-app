@@ -1,0 +1,87 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath "io.ebean:ebean-gradle-plugin:11.11.1"
+  }
+}
+
+
+
+plugins {
+  id 'java'
+  id 'application'
+  id 'io.ebean' version '11.11.1'
+  id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+repositories {
+  mavenCentral()
+}
+
+apply plugin: 'io.ebean'
+
+ //Apply the Shadow plugin
+apply plugin: 'com.github.johnrengelman.shadow'
+
+group = "com.moonlight"
+version = "5.5.3"
+
+def vertxVersion = "3.8.1"
+def junitJupiterVersion = "5.9.1"
+def jacksonVersion = "2.9.9"
+def mainVerticleName = "com.moonlight.MainVerticle"
+def launcherClassName = "io.vertx.core.Launcher"
+def watchForChange = "src/**/*"
+def doOnChange = "./gradlew classes"
+
+application {
+  mainClass.set(launcherClassName)
+}
+
+dependencies {
+  implementation("io.vertx:vertx-stack-depchain:$vertxVersion")
+  implementation("io.vertx:vertx-web-client")
+  implementation("io.vertx:vertx-web")
+//  testImplementation("io.vertx:vertx-junit5")
+  testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
+  implementation("org.slf4j:slf4j-api:1.7.25")
+  compileOnly("org.projectlombok:lombok:1.18.20")
+  annotationProcessor("org.projectlombok:lombok:1.18.20")
+  implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+  implementation("com.mysql:mysql-connector-j:8.3.0")
+  implementation('io.ebean:ebean:11.27.1')
+//  classpath "io.ebean:ebean-gradle-plugin:11.11.1"
+}
+
+java {
+  sourceCompatibility = JavaVersion.VERSION_1_8
+  targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+run {
+  args = [
+          'run',
+          mainVerticleName,
+          "-conf", "/Users/macbook/workspace/pratice/vertx-web-app/src/main/resources/config.json",
+          "--redeploy=$watchForChange",
+          "--launcher-class=$launcherClassName",
+          "--on-redeploy=$doOnChange"
+  ]
+}
+
+
+tasks.withType(ShadowJar) {
+  archiveClassifier = 'fat'
+  manifest {
+    attributes('Main-Verticle': mainVerticleName)
+  }
+  mergeServiceFiles()
+}
+
+test {
+  useJUnitPlatform()
+}
