@@ -24,17 +24,17 @@ public class MainVerticle extends AbstractVerticle {
   private static final Logger log = LoggerFactory.getLogger(MainVerticle.class);
   public static final int PORT = 8888;
 
-//  public static void main(String[] args) {
-//    final Vertx vertx = Vertx.vertx();
-//    vertx.exceptionHandler(error -> log.error("error : {}", error.getMessage()));
-//    vertx.deployVerticle(MainVerticle.class.getName(), ar -> {
-//      if (ar.failed()) {
-//        log.info("Failed to deploy : {}", ar.cause());
-//        return;
-//      }
-//      log.info("Deployed {}", MainVerticle.class.getSimpleName());
-//    });
-//  }
+  public static void main(String[] args) {
+    final Vertx vertx = Vertx.vertx();
+    vertx.exceptionHandler(error -> log.error("error : {}", error.getMessage()));
+    vertx.deployVerticle(MainVerticle.class.getName(), ar -> {
+      if (ar.failed()) {
+        log.info("Failed to deploy : {}", ar.cause());
+        return;
+      }
+      log.info("Deployed {}", MainVerticle.class.getSimpleName());
+    });
+  }
 
   @Override
   public void start(Promise<Void> startPromise) throws Exception {

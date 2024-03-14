@@ -7,11 +7,13 @@
     </Appenders>
     <Loggers>
         <Logger name="com.moonlight" level="INFO"></Logger>
+        <logger name="io.ebean.DDL" level="TRACE"/>
+        <logger name="io.ebean.SQL" level="TRACE"/>
+        <logger name="io.ebean.TXN" level="TRACE"/>
+        <logger name="io.ebean.SUM" level="TRACE"/>
         <Root level="INFO">
             <AppenderRef ref="Console"/>
         </Root>
     </Loggers>
-    <logger name="io.ebean.DDL" level="TRACE"/>
-    <logger name="io.ebean.SQL" level="TRACE"/>
-    <logger name="io.ebean.TXN" level="TRACE"/>
+
 </Configuration>

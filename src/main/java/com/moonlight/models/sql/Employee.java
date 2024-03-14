@@ -15,22 +15,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Data
-//@AllArgsConstructor
-//@NoArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 //@JsonInclude(JsonInclude.Include.NON_NULL)
 //@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 @EqualsAndHashCode(callSuper = false)
-@Table(name = "employees")
+@Table(name = "employee")
 public class Employee extends BaseModel {
-//	@Id
-//	private Integer employeeId;
+
 	private String employeeName;
 	private String employeeEmail;
 	private Integer employeeAge;
 	private double employeeSalary;
 
-	public void save() {
-		SqlBeanFactory.INSTANCE.saveBean(this);
-	}
 }

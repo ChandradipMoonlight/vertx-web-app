@@ -1,10 +1,7 @@
 package com.moonlight.models.sql;
 
 import com.moonlight.factory.SqlBeanFactory;
-import io.ebean.annotation.NotNull;
-import io.ebean.annotation.SoftDelete;
-import io.ebean.annotation.WhenCreated;
-import io.ebean.annotation.WhenModified;
+import io.ebean.annotation.*;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -29,5 +26,17 @@ public class BaseModel {
 
 	@SoftDelete
 	private boolean deleted;
+
+	public void save() {
+		if (createdAt==null) {
+			SqlBeanFactory.INSTANCE.saveBean(this);
+		} else {
+			SqlBeanFactory.INSTANCE.update(this);
+		}
+	}
+
+	public void delete() {
+		SqlBeanFactory.INSTANCE.delete(this);
+	}
 
 }

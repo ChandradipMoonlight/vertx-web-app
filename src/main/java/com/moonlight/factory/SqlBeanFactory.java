@@ -37,7 +37,7 @@ public enum SqlBeanFactory {
 		dbConfig.setDdlGenerate(true);
 		dbConfig.setDdlRun(true);
 		dbConfig.setDefaultServer(true);
-//		dbConfig.setDdlCreateOnly(true);
+		dbConfig.setDdlCreateOnly(true);
 
 		dbConfig.addPackage("com.moonlight.models.sql");
 //		dbConfig.addClass(Employee.class);

@@ -2,7 +2,6 @@ package com.moonlight.utils;
 
 import io.netty.handler.codec.http.HttpHeaderValues;
 import io.vertx.core.http.HttpHeaders;
-import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.RoutingContext;
 import org.slf4j.Logger;
@@ -19,37 +18,47 @@ public enum ResponseUtils {
 					.putHeader(HttpHeaders.CONTENT_TYPE, HttpHeaderValues.APPLICATION_JSON)
 					.end(JsonObject.mapFrom(object).encode());
 		} catch (Exception e) {
-			logger.error("Error : {}", e.getMessage());
+			logger.error("Exception in writeJsonResponse : {}", e);
 		}
 	}
-	public void writeJsonResponse(RoutingContext context, Object object, String message) {
+	public void writeJsonResponse(RoutingContext context, Object object, String status) {
 		try {
 			context.response()
 					.putHeader(HttpHeaders.CONTENT_TYPE, HttpHeaderValues.APPLICATION_JSON)
-					.end(JsonObject.mapFrom(object).put("message", message).encode());
+					.end(JsonObject.mapFrom(object).put("status", status).encode());
 		} catch (Exception e) {
-			logger.error("Error : {}", e.getMessage());
+			logger.error("Exception in writeJsonResponse : {}", e);
 		}
 	}
-	public void writeJsonResponse(RoutingContext context, Object object, String message, int statusCode) {
+	public void writeJsonResponse(RoutingContext context, Object object, String status, int statusCode) {
 		try {
 			context.response()
 					.putHeader(HttpHeaders.CONTENT_TYPE, HttpHeaderValues.APPLICATION_JSON)
-					.setStatusCode(statusCode)
-					.end(JsonObject.mapFrom(object).put("message", message).encode());
+					.end(JsonObject.mapFrom(object).put("status", status).encode());
 		} catch (Exception e) {
-			logger.error("Error : {}", e.getMessage());
+			logger.error("Exception in converting Response in json : {}", e);
 		}
 	}
 
-	public void writeJsonErrorResponse(RoutingContext context, String message, int statusCode) {
+	public void writeJsonErrorResponse(RoutingContext context, String status, int statusCode) {
 		try {
 			context.response()
 					.putHeader(HttpHeaders.CONTENT_TYPE, HttpHeaderValues.APPLICATION_JSON)
 					.setStatusCode(statusCode)
-					.end(new JsonObject().put("message", message).put("statusCode", statusCode).encode());
+					.end(new JsonObject().put("status", status).put("statusCode", statusCode).encode());
 		} catch (Exception e) {
-			logger.info("Error : {}", e.getMessage());
+			logger.error("Exception in writeJsonErrorResponse : {}", e);
+		}
+	}
+
+	public void writeJsonErrorResponse(RoutingContext context, Object data, int statusCode) {
+		try {
+			context.response()
+					.putHeader(HttpHeaders.CONTENT_TYPE, HttpHeaderValues.APPLICATION_JSON)
+					.setStatusCode(statusCode)
+					.end(JsonObject.mapFrom(data).put("status", "fail").encode());
+		} catch (Exception e) {
+			logger.error("Exception occurred while mapping error response : {}", e);
 		}
 	}
 }

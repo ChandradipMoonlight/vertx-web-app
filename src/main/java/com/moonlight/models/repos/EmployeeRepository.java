@@ -1,6 +1,7 @@
 package com.moonlight.models.repos;
 
 import com.moonlight.models.sql.Employee;
+import io.ebean.ExpressionList;
 
 import java.util.List;
 
@@ -15,6 +16,10 @@ public enum EmployeeRepository {
 
 	public List<Employee> findAll() {
 		return employeeFinder.findAll();
+	}
+
+	public ExpressionList<Employee> findAllEmployee() {
+		return employeeFinder.query().where();
 	}
 
 }

@@ -57,6 +57,6 @@ public class HttpRoutes extends AbstractVerticle {
 		router.get("/asset").handler(AssetController.INSTANCE::handle);
 		router.post("/employee/save").handler(AddEmployeeController.INSTANCE::handle);
 		router.get("/employee/:employeeId").handler(GetEmployeeController.INSTANCE::handle);
-		router.get("/employee/all").handler(GetAllEmployeeController.INSTANCE::handle);
+		router.get("/employee").handler(GetAllEmployeeController.INSTANCE::handle);
 	}
 }
