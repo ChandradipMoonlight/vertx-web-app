@@ -1,10 +1,7 @@
 package com.moonlight;
 
 import com.moonlight.config.ConfigManager;
-import com.moonlight.controller.AddEmployeeController;
-import com.moonlight.controller.AssetController;
-import com.moonlight.controller.GetAllEmployeeController;
-import com.moonlight.controller.GetEmployeeController;
+import com.moonlight.controller.*;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
 import io.vertx.core.http.HttpServer;
@@ -58,5 +55,7 @@ public class HttpRoutes extends AbstractVerticle {
 		router.post("/employee/save").handler(AddEmployeeController.INSTANCE::handle);
 		router.get("/employee/:employeeId").handler(GetEmployeeController.INSTANCE::handle);
 		router.get("/employee").handler(GetAllEmployeeController.INSTANCE::handle);
+		router.put("/employee/update/:employeeId").handler(UpdateEmployeeController.INSTANCE::handle);
+		router.delete("/employee/delete/:employeeId").handler(DeleteEmployeeController.INSTANCE::handle);
 	}
 }

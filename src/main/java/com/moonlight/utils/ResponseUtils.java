@@ -16,7 +16,7 @@ public enum ResponseUtils {
 		try {
 			context.response()
 					.putHeader(HttpHeaders.CONTENT_TYPE, HttpHeaderValues.APPLICATION_JSON)
-					.end(JsonObject.mapFrom(object).encode());
+					.end(JsonObject.mapFrom(object).put("status", "success").encode());
 		} catch (Exception e) {
 			logger.error("Exception in writeJsonResponse : {}", e);
 		}
