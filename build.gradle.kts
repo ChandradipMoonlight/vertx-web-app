@@ -1,6 +1,5 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import org.gradle.api.tasks.testing.logging.TestLogEvent.*
-import org.gradle.internal.impldep.com.fasterxml.jackson.core.JsonPointer.compile
 
 plugins {
   java
@@ -55,6 +54,10 @@ dependencies {
   implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
   implementation("com.mysql:mysql-connector-j:8.3.0")
   implementation("io.ebean:ebean:12.7.2")
+  implementation("com.google.code.gson:gson:2.8.8")
+  implementation("com.squareup.retrofit2:retrofit:2.7.1")
+  implementation("com.squareup.retrofit2:converter-gson:2.7.1")
+  implementation("com.squareup.okhttp3:logging-interceptor:3.7.0")
 //  compile("io.ebean:ebean:12.7.2")
   // query bean generation
 //  annotationProcessor("io.ebean:querybean-generator:11.27.1")

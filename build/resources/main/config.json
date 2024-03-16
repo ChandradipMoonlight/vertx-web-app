@@ -7,5 +7,10 @@
     "username": "root",
     "url": "jdbc:mysql://localhost/mydb",
     "password": "Dipak@11"
+  },
+  "external" : {
+    "genderize" : {
+      "baseUrl" : "https://api.genderize.io"
+    }
   }
 }

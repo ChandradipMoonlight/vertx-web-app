@@ -2,6 +2,7 @@ package com.moonlight;
 
 import com.moonlight.config.ConfigManager;
 import com.moonlight.controller.*;
+import com.moonlight.external.PredicateGenderController;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
 import io.vertx.core.http.HttpServer;
@@ -57,5 +58,6 @@ public class HttpRoutes extends AbstractVerticle {
 		router.get("/employee").handler(GetAllEmployeeController.INSTANCE::handle);
 		router.put("/employee/update/:employeeId").handler(UpdateEmployeeController.INSTANCE::handle);
 		router.delete("/employee/delete/:employeeId").handler(DeleteEmployeeController.INSTANCE::handle);
+		router.get("/guss/gender").handler(PredicateGenderController.INSTANCE::handle);
 	}
 }
