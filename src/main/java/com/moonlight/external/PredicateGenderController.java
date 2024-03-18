@@ -2,7 +2,6 @@ package com.moonlight.external;
 
 import com.moonlight.controller.CommonController;
 import com.moonlight.utils.ResponseUtils;
-import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.RoutingContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
