@@ -1,7 +1,7 @@
-package com.moonlight.controller;
+package com.moonlight.controller.employeeController;
 
+import com.moonlight.controller.CommonController;
 import com.moonlight.models.mapper.EmployeeRequest;
-import com.moonlight.models.mapper.EmployeeResponse;
 import com.moonlight.models.mapper.Response;
 import com.moonlight.models.repos.EmployeeRepository;
 import com.moonlight.models.sql.Employee;
@@ -11,7 +11,6 @@ import io.vertx.ext.web.RoutingContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Optional;
 

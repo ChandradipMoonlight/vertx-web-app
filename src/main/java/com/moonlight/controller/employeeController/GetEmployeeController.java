@@ -1,5 +1,6 @@
-package com.moonlight.controller;
+package com.moonlight.controller.employeeController;
 
+import com.moonlight.controller.CommonController;
 import com.moonlight.models.mapper.Response;
 import com.moonlight.models.repos.EmployeeRepository;
 import com.moonlight.models.repos.InMemoryEmployeeRepo;

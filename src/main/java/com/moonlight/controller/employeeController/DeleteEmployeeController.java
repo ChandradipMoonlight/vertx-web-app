@@ -1,5 +1,6 @@
-package com.moonlight.controller;
+package com.moonlight.controller.employeeController;
 
+import com.moonlight.controller.CommonController;
 import com.moonlight.models.mapper.Response;
 import com.moonlight.models.repos.EmployeeRepository;
 import com.moonlight.models.sql.Employee;
@@ -12,7 +13,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Collections;
 import java.util.Optional;
 
-public enum DeleteEmployeeController implements CommonController{
+public enum DeleteEmployeeController implements CommonController {
 	INSTANCE;
 	private static final Logger logger = LoggerFactory.getLogger(DeleteEmployeeController.class);
 

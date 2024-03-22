@@ -33,14 +33,13 @@ public enum SqlBeanFactory {
 	public Database dbConnection() {
 		DatabaseConfig dbConfig = new DatabaseConfig();
 		dbConfig.setDataSourceConfig(getDataSourceConfig());
+		dbConfig.addPackage("com.moonlight.models.sql");
+//		dbConfig.addClass(Employee.class);
 
 		dbConfig.setDdlGenerate(true);
 		dbConfig.setDdlRun(true);
 		dbConfig.setDefaultServer(true);
 		dbConfig.setDdlCreateOnly(true);
-
-		dbConfig.addPackage("com.moonlight.models.sql");
-//		dbConfig.addClass(Employee.class);
 		dbConfig.setRegister(true);
 		dbConfig.setDatabasePlatform(new MySqlPlatform());
 		return DatabaseFactory.create(dbConfig);

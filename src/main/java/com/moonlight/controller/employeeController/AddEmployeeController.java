@@ -1,22 +1,19 @@
-package com.moonlight.controller;
+package com.moonlight.controller.employeeController;
 
+import com.moonlight.controller.CommonController;
 import com.moonlight.models.mapper.EmployeeMapper;
 import com.moonlight.models.mapper.EmployeeResponse;
 import com.moonlight.models.mapper.Response;
-import com.moonlight.models.repos.InMemoryEmployeeRepo;
 import com.moonlight.models.sql.Employee;
 import com.moonlight.utils.ResponseUtils;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.RoutingContext;
-import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.Timestamp;
 import java.util.Arrays;
-import java.util.Optional;
 
-public enum AddEmployeeController implements CommonController{
+public enum AddEmployeeController implements CommonController {
 	INSTANCE;
 
 	private static final Logger logger = LoggerFactory.getLogger(AddEmployeeController.class);

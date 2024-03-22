@@ -58,6 +58,13 @@ dependencies {
   implementation("com.squareup.retrofit2:retrofit:2.7.1")
   implementation("com.squareup.retrofit2:converter-gson:2.7.1")
   implementation("com.squareup.okhttp3:logging-interceptor:3.7.0")
+  // https://mvnrepository.com/artifact/com.itextpdf/itextpdf
+  implementation("com.itextpdf:itextpdf:5.5.13")
+// https://mvnrepository.com/artifact/org.xhtmlrenderer/flying-saucer-pdf
+  implementation("org.xhtmlrenderer:flying-saucer-pdf:9.1.8")
+
+  implementation("com.itextpdf.tool:xmlworker:5.5.13")
+  implementation("org.jsoup:jsoup:1.13.1")
 //  compile("io.ebean:ebean:12.7.2")
   // query bean generation
 //  annotationProcessor("io.ebean:querybean-generator:11.27.1")

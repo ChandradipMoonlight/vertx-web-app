@@ -11,7 +11,7 @@ public enum InMemoryEmployeeRepo {
 	private static final Map<Integer, Employee> employeeData = new HashMap<>();
 
 	public Employee save(Employee employee) {
-		employeeData.put(employee.getEmployeeId(), employee);
+		employeeData.put(employee.getId(), employee);
 		return employee;
 	}
 	public List<Employee> saveAll(List<Employee> employees) {

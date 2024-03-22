@@ -16,7 +16,7 @@ public class BaseModel {
 	@NotNull
 	@Id
 	@Column(length = 40)
-	private Integer employeeId;
+	private Integer id;
 
 	@WhenCreated
 	private Timestamp createdAt;

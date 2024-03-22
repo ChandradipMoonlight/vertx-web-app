@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            text-align: left;
+            font-family: 'Open Sans', 'Helvetica Neue', 'source-sans-3', 'source-sans-pro', sans-serif;
+        }
+
+        thead {
+            text-align: center;
+            border: 1px solid #000;
+            padding: 10px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            margin-top: 100px;
+            display: flex;
+            flex-direction: row;
+            /* justify-content: space-between; */
+            align-items: flex-start;
+            /* border: 1px solid #000; */
+        }
+
+        /* Rest of your CSS styles */
+    </style>
+</head>
+
+
+<body>
+<div width="900px"
+     style="max-width:800px; margin: auto; margin-bottom: 30px; font-family: Open Sans,Helvetica Neue,source-sans-3,source-sans-pro,sans-serif">
+    <div width="900px" style="background-color:hwb(0 100% 0%);padding:10px 10px 10px;">
+        <table style="max-width: 900px;" cellpadding="0" cellspacing="0" width="900">
+            <!-- Header -->
+            <thead style="border: none;">
+            <tr>
+                <td colspan="6" style="border: none">
+                    <div class="" style="width: 100%;text-align: left;margin-left: -10px;">
+                        <img src="https://static.eka.io/v2/receipts/2023/01/27307c20-b2d6-422b-9922-6ddc5565cc8a.png"
+                             alt="" style="height: 110px;width:370px;" />
+
+                    </div>
+                </td>
+                <td colspan="6" style="border: none;">
+                    <div class="left-text" style="width: 100%;">
+                        <h3>DTDC Express Limited</h3>
+                        <p>{{request.billTo.address1}}</p>
+                        <p>{{request.billTo.address2}}</p>
+                        <p><b>GSTIN : {{ request.billTo.gstin }}</b></p>
+                    </div>
+                </td>
+            </tr>
+            <!-- Divider -->
+            <tr>
+                <td colspan="12" style="width: 100%;border: none;height: 8px;">
+                    <div style="width: 100%;border: none;height: 3px;background: #000"></div>
+                </td>
+            </tr>
+            <!-- PO Label -->
+            <tr>
+                <td colspan="12" style="border: none;text-align: center;">
+                    <div style="padding-bottom: 16px;font-weight: 600;font-size: 22px;padding-top: 16px;">PURCHASE ORDER</div>
+                </td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr style="text-align: center;"></tr>
+            <tr>
+                <img src="">
+            </tr>
+            <tr>
+                <td colspan="6"
+                    style="border: 1px solid #000; color:#303c42;font-size:12px; padding-left: 4px;text-align: start;">
+                    <h4 style="margin: 5px 0px;">TO,</h4>
+                    <p style="margin: 5px 0px;">Vendor Code: {{ request.vendor.code }}</p>
+                    <p style="margin: 5px 0px;">GST Number: {{ request.vendor.gstin }}</p>
+                    <p style="margin: 5px 0px;">Name: {{ request.vendor.name }}</p>
+                    <p style="margin: 5px 0px;">{{ request.vendor.address1 }}</p>
+                    <p style="margin: 5px 0px;">{{ request.vendor.address2 }}</p>
+                </td>
+                <td colspan="6" style="border: none ">
+                    <div style="display: flex;">
+                        <div
+                                style="border: solid 1px #000; flex: 1; padding-left: 5px;color:#303c42;font-size: 12px;padding:5px;">
+                            Order No.: {{ request.poNo }}
+                        </div>
+                    </div>
+                    <div style="display: flex;">
+                        <div
+                                style="border: solid 1px #000; flex: 1; padding-left: 5px;font-size: 12px;padding:5px;">
+                            Date: {{ request.poDate }}
+                        </div>
+                    </div>
+                    <div style="display: flex;">
+                        <div
+                                style="border: solid 1px #000; flex: 1; padding-left: 5px;font-size: 12px;padding:5px;">
+                            <div>End date:{{ request.endDate }} </div>
+                        </div>
+                    </div>
+                    <div style="display: flex;">
+                        <div
+                                style="border: solid 1px #000; flex: 1; padding-left: 5px;font-size: 12px;padding:5px;">
+                            Version No:
+                        </div>
+                    </div>
+                    <div style="display: flex;">
+                        <div
+                                style="border: solid 1px #000; flex: 1; padding-left: 5px;font-size: 12px;padding:5px;">
+                            Our Enquiry Ref: {{ request.enquiry }}
+                        </div>
+                    </div>
+                    <div style="display: flex;">
+                        <div
+                                style="border: solid 1px #000; flex: 1; padding-left: 5px;font-size: 12px;padding:5px;">
+                            <div>Requisitioner: </div>
+                        </div>
+                    </div>
+                    <div style="display: flex;">
+                        <div
+                                style="border: solid 1px #000; flex: 1; padding-left: 5px;font-size: 12px;padding:5px;">
+                            <div>Your Quotation Ref: </div>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td colspan="12"
+                    style="border: .5px solid #e7e7e7; color:#303c42;font-size:12px; padding-left: 4px;text-align: start;justify-content: space-between;">
+                    <p>Please supply the below mentioned materials as per the instructions. </p>
+                    <p>Currency: INR </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1"
+                    style=" font-weight: 700; border: .5px solid #e7e7e7; color:#303c42;font-size:12px; padding-left: 4px;text-align: center;">
+                    <p style="margin: 5px 0px;">Sl no</p>
+                </td>
+                <td colspan="1"
+                    style="font-weight: 700; border: .5px solid #e7e7e7; color:#303c42;font-size:12px; padding-left: 4px;text-align: center;">
+                    <p style="margin: 5px 0px;">Material Code</p>
+                </td>
+                <td colspan="3"
+                    style="width: 450px; font-weight: 700; border: .5px solid #e7e7e7; color:#303c42;font-size:12px; padding-left: 4px;text-align: center;">
+                    <p style="margin: 5px 0px;">Material/Service Description</p>
+                </td>
+                <td
+                        style="width: 100px; font-weight: 700; border: .5px solid #e7e7e7; color:#303c42;font-size:12px; padding-left: 4px;text-align: center;">
+                    <p style="margin: 5px 0px;">UOM</p>
+                </td>
+                <td
+                        style="font-weight: 700; border: .5px solid #e7e7e7; color:#303c42;font-size:12px; padding-left: 4px;text-align: center;">
+                    <p style="margin: 5px 0px;">Quantity</p>
+                </td>
+                <td
+                        style="width: 150px; font-weight: 700; border: .5px solid #e7e7e7; color:#303c42;font-size:12px; padding-left: 4px;text-align: center;">
+                    <p style="margin: 5px 0px;">Unit Price/Qty</p>
+                </td>
+                <td colspan="2"
+                    style="width: 200px; font-weight: 700; border: .5px solid #e7e7e7; color:#303c42;font-size:12px; padding-left: 4px;text-align: center;">
+                    <p style="margin: 5px 0px;">Value</p>
+                </td>
+            </tr>
+            {% for item in request.items %}
+            <tr style="border: solid 0.5px #e7e7e7;">
+                <td colspan="1"
+                    style="border: solid 0px #e7e7e7; padding: 5px; text-align: center;font-size: 10px;">{{
+                    item.itemNo }}</td>
+                <td colspan="1" style="border: solid 0px #e7e7e7; padding: 5px;font-size: 10px">{{ item.code }}
+                </td>
+                <td colspan="3"
+                    style="width: 350px; border: solid 0px #e7e7e7; padding: 5px; text-align: center;font-size: 10px">
+                    {{ item.description }}<br />
+                    HSN Code {{item.hsn}}
+                </td>
+                <td
+                        style="width: 100px; border: solid 0px #e7e7e7; padding: 5px; text-align: center;font-size: 10px">
+                    {{ item.unit }}</td>
+                <td style="border: solid 0px #e7e7e7; padding: 5px; text-align: center;font-size: 10px">{{
+                    item.quantity }}</td>
+                <td
+                        style="width: 150px; border: solid 0px #e7e7e7; padding: 5px; text-align: center;font-size: 10px">
+                    {{ item.rate }}
+                    <br />
+                    <br />
+                    <div style="width: 50%; float: left; text-align: left;">CGST</div>
+                    <div style="width: 50%; float: left; text-align: right;">{{ item.gstPercent.cgst }} %</div>
+                    <br>
+                    <div style="width: 50%; float: left; text-align: left;">IGST</div>
+                    <div style="width: 50%; float: left; text-align: right;">{{ item.gstPercent.igst }} %</div>
+                    <br>
+                    <div style="width: 50%; float: left; text-align: left;">SGST</div>
+                    <div style="width: 50%; float: left; text-align: right;">{{ item.gstPercent.sgst }} %</div>
+                </td>
+                <td colspan="2"
+                    style="border: solid 0px #e7e7e7; padding: 5px; text-align: center;font-size: 10px">
+                    {{ item.amount }}
+                    <br />
+                    <br />{{ item.gstValue.cgst }}<br />{{ item.gstValue.igst }}<br />{{ item.gstValue.sgst }}
+                </td>
+            </tr>
+            {% endfor %}
+            <tr style="height: 10px;"></tr>
+            <tr>
+                <td colspan="6"
+                    style="font-weight: 700; border: .5px solid #fff; color:#303c42;font-size:12px; padding-left: 4px;padding-right: 5px;text-align: left;padding-right: 5px;">
+                    <p> Terms & Conditions.</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7" rowspan="2">
+                    <ol>
+                        {% for condition in request.conditions %}
+                        <li>
+                            <p><span style="font-weight:300;font-size: 12px;">{{ condition.title }}</span></p>
+                            <p class="small-text" style="line-height: 0%;padding-left: 5px;">{{
+                                condition.description }}</p>
+                            <p class="small-text" style="line-height: 0%;padding-left: 5px;">{{
+                                condition.content }}</p>
+                        </li>
+                        {% endfor %}
+                    </ol>
+                </td>
+                <td colspan="5" style="vertical-align: top;">
+                    <sapn style="text-aling:left; font-size: 11px; padding-left:20px;font-weight: 800;">BASIC:
+                    </sapn>
+                    <sapn style="font-size: 11px; padding-right:20px; text-aling:right; float:right;">{{
+                        request.totalBaseAmt }}</sapn>
+                    <br />
+                    <sapn style="text-aling:left; font-size: 11px; padding-left:20px;font-weight: 800;">CGST:
+                    </sapn>
+                    <sapn style="font-size: 11px; padding-right:20px; text-aling:right; float:right">{{
+                        request.gstBaseAmt.cgst }}</sapn>
+                    <br />
+                    <sapn style="text-aling:left; font-size: 11px; padding-left:20px;font-weight: 800;">IGST:
+                    </sapn>
+                    <sapn style="font-size: 11px; padding-right:20px; text-aling:right; float:right">{{
+                        request.gstBaseAmt.igst }}</sapn>
+                    <br />
+                    <sapn style="text-aling:left; font-size: 11px; padding-left:20px;font-weight: 800;">SGST:
+                    </sapn>
+                    <sapn style="font-size: 11px; padding-right:20px; text-aling:right; float:right">{{
+                        request.gstBaseAmt.sgst }}</sapn>
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" style="vertical-align: top;">
+                    <sapn style="text-aling:left; font-size: 12px; padding-left:20px;font-weight: 800;">TOTAL:
+                    </sapn>
+                    <sapn style="font-size: 12px; padding-right:20px; text-aling:right; float:right">{{
+                        request.totalAmt }}</sapn>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" style="height: 100px; vertical-align: top;">
+                    <p style="font-size: 12px; font-weight: 800;padding-left: 5px;">Packing Instruction: </p>
+                </td>
+                <td colspan="4" style="vertical-align: top;">
+                    <p style="font-size: 12px;font-weight: 800;padding-left: 5px;">Special Instructions if any:
+                    </p>
+                </td>
+                <td colspan="4" style="vertical-align: top;">
+                    <p style="font-size: 12px;font-weight: 800;padding-left: 5px;">Amount in words:</p>
+                    <p style="font-size: 12px;padding-left: 5px;">{{ request.amountInWords }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="8" style="vertical-align: top;">
+                    <p style="font-size: 12px;font-weight: 800;padding-left: 5px;">Payment terms:</p>
+                    {% for term in request.paymentTerms %}
+                    <p><span style="font-weight:300;font-size: 12px;">{{ term.title }}</span></p>
+                    <!-- <p class="small-text" style="line-height: 0%;padding-left: 5px;">{{ term.description }}</p>
+                <p class="small-text" style="line-height: 0%;padding-left: 5px;">{{ term.content }}</p> -->
+                    {% endfor %}
+                </td>
+                <td colspan="4" style="height: 100px; vertical-align: top;">
+                    <p style="font-size: 12px; font-weight: 800;padding-left: 5px;">For DTDC Express Limited:
+                    </p>
+                    <p style="text-align: end; margin-top: 100px;padding-right: 10px;">Authorised Signatory</p>
+                </td>
+            </tr>
+            <tr style="height: 10px;"></tr>
+            <tr>
+                <td colspan="12" style="border: none;">
+                    Purchase order Number: {{ request.poNo }}
+                </td>
+            </tr>
+            <tr style="height: 10px;"></tr>
+            <tr>
+                <td colspan="6" style="vertical-align: top;text-align: center;">
+                    <p style="font-size: 15px; font-weight: 800;">Billing Address & GSTIN </p>
+                    <p></p>
+                </td>
+                <td colspan="6" style="vertical-align: top;text-align: center;">
+                    <p style="font-size: 15px;font-weight: 800;">Delivery/Shipping Address</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <p class="small-text" style="margin: 5px 0px;font-weight: 800;">DTDC Express Limited</p>
+                    <p class="small-text" style="margin: 5px 0px;">{{ request.billTo.officeName }}</p>
+                    <p class="small-text" style="margin: 5px 0px;">{{ request.billTo.address1 }}</p>
+                    <p class="small-text" style="margin: 5px 0px;">{{ request.billTo.address2 }}</p><br />
+                    <p class="small-text" style="margin: 5px 0px;">Tel No: {{ request.billTo.telephone }}</p>
+                    <br />
+                    <p class="small-text" style="margin: 5px 0px;">GST No: {{ request.billTo.gstin }}</p><br />
+                </td>
+                <td colspan="6">
+                    <p class="small-text" style="margin: 5px 0px;font-weight: 800;">DTDC Express Limited</p>
+                    <p class="small-text" style="margin: 5px 0px;">{{ request.shipTo.officeName }}</p>
+                    <p class="small-text" style="margin: 5px 0px;">{{ request.shipTo.address1 }}</p>
+                    <p class="small-text" style="margin: 5px 0px;">{{ request.shipTo.address2 }}</p><br />
+                    <p class="small-text" style="margin: 5px 0px;">Tel No: {{ request.shipTo.telephone }}</p>
+                    <br />
+                    <p class="small-text" style="margin: 5px 0px;">GST No: {{ request.billTo.gstin }}</p><br />
+                </td>
+            </tr>
+            <tr style="height: 10px;"></tr>
+            <tr>
+                <td colspan="12" style="text-align: center;border:none">DELIVERY SCHEDULE</td>
+            </tr>
+            <tr style="height: 10px;"></tr>
+            <tr>
+                <td
+                        style="font-weight: 700; border: .5px solid #e7e7e7; color:#303c42;font-size:12px; padding-left: 4px;text-align: center;">
+                    <p style="margin: 5px 0px;">Sno</p>
+                </td>
+                <td colspan="3"
+                    style="font-weight: 700; border: .5px solid #e7e7e7; color:#303c42;font-size:12px; padding-left: 4px;text-align: center;">
+                    <p style="margin: 5px 0px;">Material Code</p>
+                </td>
+                <td colspan="3"
+                    style="font-weight: 700; border: .5px solid #e7e7e7; color:#303c42;font-size:12px; padding-left: 4px;text-align: center;">
+                    <p style="margin: 5px 0px;">Material Description</p>
+                </td>
+                <td
+                        style="font-weight: 700; border: .5px solid #e7e7e7; color:#303c42;font-size:12px; padding-left: 4px;text-align: center;">
+                    <p style="margin: 5px 0px;">Delivery date</p>
+                </td>
+                <td
+                        style="font-weight: 700; border: .5px solid #e7e7e7; color:#303c42;font-size:12px; padding-left: 4px;text-align: center;">
+                    <p style="margin: 5px 0px;"> Quantity</p>
+                </td>
+            </tr>
+            {% for item in request.items %}
+            <tr>
+                <td style="border: solid 0.5px #e7e7e7; padding: 5px; text-align: center;font-size: 10px;">{{
+                    item.itemNo }}</td>
+                <td colspan="3" style="border: solid 0.5px #e7e7e7; padding: 5px;font-size: 10px">{{ item.code
+                    }}</td>
+                <td colspan="3"
+                    style="border: solid 0.5px #e7e7e7; padding: 5px; text-align: center;font-size: 10px; max-width: 300px">
+                    {{ item.description }}<br />
+                    HSN Code {{item.hsn}}
+                </td>
+                <td style="border: solid 0.5px #e7e7e7; padding: 5px; text-align: center;font-size: 10px">{{
+                    item.deliveryDate }}</td>
+                <td style="border: solid 0.5px #e7e7e7; padding: 5px; text-align: center;font-size: 10px">{{
+                    item.quantity }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <tfoot>
+        <div style="font-size: 12px; text-align: center;color: #000;margin-top: 100px;">
+            <p>This is a system-generated purchase order and does not require any physical signature</p>
+            <p>---------------------------------------------------------------------------------------------------------------------------------------------
+            </p>
+            <p style="font-weight:600;text-align: center;"> Regd.Office: "DTDC HOUSE",No.3, Victoria Road,
+                Bangalore - 560 047,Karnataka,India
+                Tel: 91-80-25302333. CIN No: U85110KA1990PLC011089.</p>
+        </div>
+        </tfoot>
+    </div>
+</div>
+<!-- <footer>
+    <div style="font-size: 12px; text-align: center;color: #000;margin-top: 100px;">
+        <p>This is a system-generated purchase order and does not require any physical signature</p>
+        <p>---------------------------------------------------------------------------------------------------------------------------------------------
+        </p>
+        <p style="font-weight:600;text-align: center;"> Regd.Office: "DTDC HOUSE",No.3, Victoria Road,
+            Bangalore - 560 047,Karnataka,India
+            Tel: 91-80-25302333. CIN No: U85110KA1990PLC011089.</p>
+    </div>
+</footer> -->
+</body>
+
+</html>

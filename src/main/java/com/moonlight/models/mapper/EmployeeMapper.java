@@ -7,7 +7,7 @@ public enum EmployeeMapper {
 
 	public EmployeeResponse createEmployeeResponse(Employee employee) {
 		return EmployeeResponse.builder()
-				.employeeId(employee.getEmployeeId())
+				.employeeId(employee.getId())
 				.employeeName(employee.getEmployeeName())
 				.employeeEmail(employee.getEmployeeEmail())
 				.employeeSalary(employee.getEmployeeSalary())

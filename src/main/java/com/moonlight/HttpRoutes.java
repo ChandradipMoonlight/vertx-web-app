@@ -2,6 +2,11 @@ package com.moonlight;
 
 import com.moonlight.config.ConfigManager;
 import com.moonlight.controller.*;
+import com.moonlight.controller.customerController.AddAddressController;
+import com.moonlight.controller.customerController.AddCustomerController;
+import com.moonlight.controller.customerController.GetAllCustomerController;
+import com.moonlight.controller.customerController.GetCustomerController;
+import com.moonlight.controller.employeeController.*;
 import com.moonlight.external.PredicateGenderController;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
@@ -59,5 +64,11 @@ public class HttpRoutes extends AbstractVerticle {
 		router.put("/employee/update/:employeeId").handler(UpdateEmployeeController.INSTANCE::handle);
 		router.delete("/employee/delete/:employeeId").handler(DeleteEmployeeController.INSTANCE::handle);
 		router.get("/guss/gender").handler(PredicateGenderController.INSTANCE::handle);
+		router.get("/convert/html-to-pdf/").handler(HtmlToPdfController.INSTANCE::handle);
+
+		router.get("/customers").handler(GetAllCustomerController.INSTANCE::handle);
+		router.get("/customer/:customerId").handler(GetCustomerController.INSTANCE::handle);
+		router.post("/customer/save").handler(AddCustomerController.INSTANCE::handle);
+		router.post("/address/save/:customerId").handler(AddAddressController.INSTANCE::handle);
 	}
 }
