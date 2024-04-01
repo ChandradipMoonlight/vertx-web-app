@@ -1,8 +1,6 @@
 package com.moonlight.config;
 
 import io.vertx.core.json.JsonObject;
-import lombok.Getter;
-import lombok.Setter;
 
 
 public enum ConfigManager {

@@ -2,11 +2,9 @@ package com.moonlight.factory;
 
 import com.moonlight.config.ConfigHelper;
 import com.moonlight.models.sql.BaseModel;
-import com.moonlight.models.sql.Employee;
 import io.ebean.Database;
 import io.ebean.DatabaseFactory;
 import io.ebean.config.DatabaseConfig;
-import io.ebean.config.dbplatform.mysql.MySql55Platform;
 import io.ebean.config.dbplatform.mysql.MySqlPlatform;
 import io.ebean.datasource.DataSourceConfig;
 import io.vertx.core.json.JsonObject;

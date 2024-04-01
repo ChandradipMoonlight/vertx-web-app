@@ -1,5 +1,6 @@
 package com.moonlight.controller;
 
+import com.moonlight.utils.ResponseUtils;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.HttpHeaders;
 import io.vertx.ext.web.RoutingContext;
@@ -37,7 +38,7 @@ public enum HtmlToPdfController implements CommonController {
 	}
 
 	private File convertHtmlToPdf() {
-		String filePath = "src/main/resources/templates/test.html";
+		String filePath = "src/main/resources/templates/test1.html";
 		File inputHtml = new File(filePath);
 		Document document = null;
 		File pdfFile = null;
@@ -50,7 +51,7 @@ public enum HtmlToPdfController implements CommonController {
 				SharedContext sharedContext = renderer.getSharedContext();
 				sharedContext.setPrint(true);
 				sharedContext.setInteractive(false);
-				renderer.setDocumentFromString(inputHtml.toURI().toURL().toString());
+				renderer.setDocument(inputHtml);
 				renderer.layout();
 				renderer.createPDF(outputStream);
 			} catch (Exception e) {

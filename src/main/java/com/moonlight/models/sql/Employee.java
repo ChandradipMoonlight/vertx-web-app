@@ -1,17 +1,11 @@
 package com.moonlight.models.sql;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.moonlight.factory.SqlBeanFactory;
-import com.moonlight.models.repos.EmployeeRepository;
-import io.ebean.Model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Data

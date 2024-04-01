@@ -1,9 +1,7 @@
 package com.moonlight.models.mapper;
 
-import lombok.Builder;
 import lombok.Data;
 
-import java.util.Date;
 
 @Data
 public class AddressResponse {
