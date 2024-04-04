@@ -11,6 +11,9 @@
   "external" : {
     "genderize" : {
       "baseUrl" : "https://api.genderize.io"
+    },
+    "products" : {
+      "baseUrl" : "https://fakestoreapi.com"
     }
   }
 }

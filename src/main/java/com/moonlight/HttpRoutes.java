@@ -8,6 +8,7 @@ import com.moonlight.controller.customerController.GetAllCustomerController;
 import com.moonlight.controller.customerController.GetCustomerController;
 import com.moonlight.controller.employeeController.*;
 import com.moonlight.external.PredicateGenderController;
+import com.moonlight.external.controller.GetAllProductsController;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
 import io.vertx.core.http.HttpServer;
@@ -63,12 +64,15 @@ public class HttpRoutes extends AbstractVerticle {
 		router.get("/employee").handler(GetAllEmployeeController.INSTANCE::handle);
 		router.put("/employee/update/:employeeId").handler(UpdateEmployeeController.INSTANCE::handle);
 		router.delete("/employee/delete/:employeeId").handler(DeleteEmployeeController.INSTANCE::handle);
-		router.get("/guss/gender").handler(PredicateGenderController.INSTANCE::handle);
 		router.get("/convert/html-to-pdf/").handler(HtmlToPdfController.INSTANCE::handle);
 
 		router.get("/customers").handler(GetAllCustomerController.INSTANCE::handle);
 		router.get("/customer/:customerId").handler(GetCustomerController.INSTANCE::handle);
 		router.post("/customer/save").handler(AddCustomerController.INSTANCE::handle);
 		router.post("/address/save/:customerId").handler(AddAddressController.INSTANCE::handle);
+
+
+		router.get("/guss/gender").handler(PredicateGenderController.INSTANCE::handle);
+		router.get("/external/products").handler(GetAllProductsController.INSTANCE::handle);
 	}
 }

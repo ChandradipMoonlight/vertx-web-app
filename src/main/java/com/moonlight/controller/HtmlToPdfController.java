@@ -38,7 +38,7 @@ public enum HtmlToPdfController implements CommonController {
 	}
 
 	private File convertHtmlToPdf() {
-		String filePath = "src/main/resources/templates/test1.html";
+		String filePath = "/Users/macbook/workspace/pratice/vertx-web-app/src/main/resources/templates/test1.html";
 		File inputHtml = new File(filePath);
 		Document document = null;
 		File pdfFile = null;

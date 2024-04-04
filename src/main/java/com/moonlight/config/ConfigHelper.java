@@ -13,4 +13,8 @@ public enum ConfigHelper {
 		return ConfigManager.INSTANCE.getMainConfig()
 				.getJsonObject("external").getJsonObject("genderize");
 	}
+
+	public JsonObject getExternalConfig() {
+		return ConfigManager.INSTANCE.getMainConfig().getJsonObject("external");
+	}
 }

@@ -1,5 +1,8 @@
 package com.moonlight;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.moonlight.models.mapper.Person;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
@@ -26,5 +29,13 @@ public class TestMainVerticle {
   void test_javaToJsonObject() {
     JsonObject jsonObject = JsonObject.mapFrom(new Person(101, "Chandradip"));
     System.out.println(jsonObject.encode());
+  }
+
+  void test_gson() {
+    JsonArray jsonArray = new JsonArray();
+
+    JsonElement jsonElement = jsonArray.get(0);
+
+    Person person = new Gson().fromJson(jsonElement, Person.class);
   }
 }
