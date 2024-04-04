@@ -22,7 +22,7 @@ public enum GetAllProductsController implements CommonController {
 			retrofit2.Response<List<Product>> execute = ProductServiceImpl.INSTANCE.fakeStoreApis()
 					.getAllProducts().execute();
 			if (execute.isSuccessful()&& execute.body()!=null) {
-				execute.body().forEach(product -> logger.info("Response : {}", product));
+				logger.info("ProductList size : {}", execute.body().size());
 				response.setData(execute.body());
 				response.setMessage("All Products fetched successfully");
 				ResponseUtils.INSTANCE.writeJsonResponse(context, response);
