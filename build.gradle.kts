@@ -69,6 +69,7 @@ dependencies {
   // query bean generation
 //  annotationProcessor("io.ebean:querybean-generator:11.27.1")
 //  testCompileOnly("io.ebean:ebean-test:12.7.2")
+  implementation("com.auth0:java-jwt:3.4.0")
 }
 
 java {

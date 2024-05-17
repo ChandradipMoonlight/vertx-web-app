@@ -1,5 +1,6 @@
 package com.moonlight.external;
 
+import com.moonlight.config.ConfigHelper;
 import com.moonlight.controller.CommonController;
 import com.moonlight.utils.ResponseUtils;
 import io.vertx.core.json.JsonArray;
@@ -21,10 +22,11 @@ public enum PredicateGenderController implements CommonController {
 		com.moonlight.models.mapper.Response stdResponse = new com.moonlight.models.mapper.Response();
 		try {
 			List<String> name = context.queryParam("name");
-			Response<PredicateGenderResponse> jsonResponse = PublicApiClient.INSTANCE.genderizeApiService()
+
+			String baseUrl = ConfigHelper.INSTANCE.getGenderizeConfig().getString("baseUrl");
+			Response<PredicateGenderResponse> jsonResponse = ApiClientManager.INSTANCE.getApiClient(baseUrl, GenderizeService.class)
 					.guessGenderFromName(name.get(0))
 					.execute();
-
 			if (jsonResponse.isSuccessful()) {
 				logger.info("Api Response form client : {}", jsonResponse.body());
 				 stdResponse.setMessage("Data fetched successfully");

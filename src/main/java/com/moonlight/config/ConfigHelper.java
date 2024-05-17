@@ -17,4 +17,8 @@ public enum ConfigHelper {
 	public JsonObject getExternalConfig() {
 		return ConfigManager.INSTANCE.getMainConfig().getJsonObject("external");
 	}
+
+	public JsonObject getAuthConfig() {
+		return ConfigManager.INSTANCE.getMainConfig().getJsonObject("auth");
+	}
 }
