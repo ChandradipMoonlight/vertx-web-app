@@ -15,5 +15,8 @@
     "products" : {
       "baseUrl" : "https://fakestoreapi.com"
     }
+  },
+  "auth" : {
+    "secret" : "qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm"
   }
 }

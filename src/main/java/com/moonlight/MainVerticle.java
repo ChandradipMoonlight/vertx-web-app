@@ -2,6 +2,7 @@ package com.moonlight;
 
 import com.moonlight.config.ConfigManager;
 import com.moonlight.factory.SqlBeanFactory;
+import com.moonlight.utils.RxHttpRouter;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Promise;
@@ -37,11 +38,21 @@ public class MainVerticle extends AbstractVerticle {
               completionHandler -> {
                 if (completionHandler.succeeded()) {
                   log.info("Deployed {} with Id {}", HttpRoutes.class.getSimpleName(), completionHandler);
-                  startPromise.complete();
+//                  startPromise.complete();
                 } else {
                   log.error("Error in starting {} :: {}", HttpRoutes.class.getName(), completionHandler.cause());
                 }
               });
+    vertx.deployVerticle(RxHttpRouter.class.getName(),
+            new DeploymentOptions().setInstances(2),
+            completionHandler -> {
+              if (completionHandler.succeeded()) {
+                log.info("Deployed {} with Id {}", RxHttpRouter.class.getSimpleName(), completionHandler);
+                startPromise.complete();
+              } else {
+                log.error("Error in starting {} :: {}", RxHttpRouter.class.getName(), completionHandler.cause());
+              }
+            });
     CompletableFuture.supplyAsync(() -> {
       try {
         SqlBeanFactory.INSTANCE.init();

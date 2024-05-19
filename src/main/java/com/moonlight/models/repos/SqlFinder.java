@@ -2,6 +2,7 @@ package com.moonlight.models.repos;
 
 import com.moonlight.factory.SqlBeanFactory;
 import io.ebean.Database;
+import io.ebean.ExpressionList;
 import io.ebean.Query;
 
 import java.util.List;
@@ -29,5 +30,8 @@ public class SqlFinder<T, I> {
 		return query().findList();
 	}
 
+	public ExpressionList<T> getExpressionList() {
+		return database().find(tClass).where();
+	}
 
 }

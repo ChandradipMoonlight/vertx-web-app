@@ -9,6 +9,7 @@ import io.netty.handler.codec.http.HttpResponseStatus;
 import io.vertx.ext.web.RoutingContext;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Optional;
 
 public enum GetEmployeeController implements CommonController {
@@ -25,7 +26,7 @@ public enum GetEmployeeController implements CommonController {
 			ResponseUtils.INSTANCE.writeJsonResponse(context, response, "success");
 		} else {
 			response.setMessage("Employee not found with given employeeId : "+employeeId);
-			response.setErrors(Arrays.asList("Employee not found!"));
+			response.setErrors(Collections.singletonList("Employee not found!"));
 			ResponseUtils.INSTANCE.writeJsonErrorResponse(context, response, HttpResponseStatus.NOT_FOUND.code());
 		}
 	}

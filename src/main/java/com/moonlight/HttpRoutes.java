@@ -9,7 +9,9 @@ import com.moonlight.controller.customerController.GetCustomerController;
 import com.moonlight.controller.employeeController.*;
 import com.moonlight.external.PredicateGenderController;
 import com.moonlight.external.controller.GetAllProductsController;
+import com.moonlight.utils.RxHttpRouter;
 import io.vertx.core.AbstractVerticle;
+import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Promise;
 import io.vertx.core.http.HttpServer;
 import io.vertx.core.http.HttpServerOptions;
@@ -25,14 +27,11 @@ public class HttpRoutes extends AbstractVerticle {
 	private HttpServer httpServer;
 	@Override
 	public void start(Promise<Void> startPromise) throws Exception {
-//		super.start(startPromise);
 		Router router = Router.router(vertx);
 		router.route().handler(BodyHandler.create());
 		HttpServerOptions serverOptions = new HttpServerOptions();
 		serverOptions.setCompressionSupported(true);
-
 		httpServer = vertx
-//				.createHttpServer()
 				.createHttpServer(serverOptions)
 				.requestHandler(router)
 				.listen(ConfigManager.INSTANCE.getMainConfig().getInteger("port"), httpListenHandler -> {
@@ -74,5 +73,10 @@ public class HttpRoutes extends AbstractVerticle {
 
 		router.get("/guss/gender").handler(PredicateGenderController.INSTANCE::handle);
 		router.get("/external/products").handler(GetAllProductsController.INSTANCE::handle);
+
+	}
+
+	private int getProcessors() {
+		return Math.max(1, Runtime.getRuntime().availableProcessors());
 	}
 }

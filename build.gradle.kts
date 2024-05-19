@@ -42,7 +42,7 @@ dependencies {
   implementation("io.vertx:vertx-web-client")
   implementation("io.vertx:vertx-web")
 //  implementation("io.vertx:vertx-mysql-client")
-//  implementation("io.vertx:vertx-rx-java3")
+  implementation("io.vertx:vertx-rx-java:3.8.1")
 //  implementation("io.vertx:vertx-mongo-client")
   testImplementation("io.vertx:vertx-junit5")
   testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
