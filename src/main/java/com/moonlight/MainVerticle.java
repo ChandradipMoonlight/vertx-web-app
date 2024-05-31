@@ -2,7 +2,6 @@ package com.moonlight;
 
 import com.moonlight.config.ConfigManager;
 import com.moonlight.factory.SqlBeanFactory;
-import com.moonlight.utils.RxHttpRouter;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Promise;

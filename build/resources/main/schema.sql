@@ -40,3 +40,7 @@ ADD email VARCHAR(255);
 ALTER TABLE users
 ADD mobile_no VARCHAR(255);
 
+ALTER TABLE employee
+ADD gender VARCHAR(255)
+
+

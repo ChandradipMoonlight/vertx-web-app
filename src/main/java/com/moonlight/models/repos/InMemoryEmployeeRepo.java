@@ -26,15 +26,15 @@ public enum InMemoryEmployeeRepo {
 		employeeData.remove(id);
 	}
 	public List<Employee> findAll() {
-		addInitData();
+//		addInitData();
 		if (employeeData.values().isEmpty()) {
 			return new ArrayList<>();
 		} else {
 			return new ArrayList<>(employeeData.values());
 		}
 	}
-	public void addInitData() {
-		employeeData.put(1, new Employee("Dipak S", "d@gamil.com", 24, 43543 ));
-		employeeData.put(2, new Employee("Ram", "r@gmail.com", 32, 45645));
-	}
+//	public void addInitData() {
+//		employeeData.put(1, new Employee("Dipak S", "d@gamil.com", 24, 43543 ));
+//		employeeData.put(2, new Employee("Ram", "r@gmail.com", 32, 45645));
+//	}
 }

@@ -22,5 +22,6 @@ public class Employee extends BaseModel {
 	private String employeeEmail;
 	private Integer employeeAge;
 	private double employeeSalary;
+	private String gender;
 
 }
