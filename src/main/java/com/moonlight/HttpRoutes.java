@@ -32,9 +32,9 @@ public class HttpRoutes extends AbstractVerticle {
 		httpServer = vertx
 				.createHttpServer(serverOptions)
 				.requestHandler(router)
-				.listen(ConfigManager.INSTANCE.getMainConfig().getInteger("port"), httpListenHandler -> {
+				.listen(9090, httpListenHandler -> {
 					if (httpListenHandler.succeeded()) {
-						logger.info("HTTP server started on port : {}", ConfigManager.INSTANCE.getMainConfig().getInteger("port"));
+						logger.info("HTTP server started on port : {}", 9090);
 						startPromise.complete();
 					} else {
 						logger.info("HTTP server failed to start : {}", httpListenHandler.cause());

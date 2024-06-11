@@ -18,7 +18,6 @@ import rx.Single;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public enum LoginController implements NewCommonController {
 	INSTANCE;

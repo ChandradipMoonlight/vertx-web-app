@@ -27,6 +27,7 @@ public enum GetAllEmployeeController implements CommonController {
 		Response response = new Response();
 		try {
 			List<Employee> employees = EmployeeRepository.INSTANCE.findAll();
+			logger.info("Entity encode Employee[0] {}",JsonObject.mapFrom(employees.get(0)));
 			if (employees==null||employees.isEmpty()) {
 				ResponseUtils.INSTANCE.writeJsonErrorResponse(context, response, HttpResponseStatus.NOT_FOUND.code());
 			}else {

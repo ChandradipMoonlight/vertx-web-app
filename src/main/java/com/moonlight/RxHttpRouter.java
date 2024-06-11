@@ -4,6 +4,7 @@ import com.moonlight.admin.user.controller.MountUserRouter;
 import com.moonlight.config.ConfigManager;
 import com.moonlight.v2.employee.MountEmployeeRouter;
 import com.moonlight.v2.external.MountExternalRouter;
+import com.moonlight.v2.general.GeneralRouter;
 import io.vertx.core.Future;
 import io.vertx.core.http.HttpServerOptions;
 import io.vertx.rxjava.core.AbstractVerticle;
@@ -53,5 +54,6 @@ public class RxHttpRouter extends AbstractVerticle {
 		router.mountSubRouter("/users", MountUserRouter.INSTANCE.router(vertx));
 		router.mountSubRouter("/external", MountExternalRouter.INSTANCE.router(vertx));
 		router.mountSubRouter("/employee", MountEmployeeRouter.INSTANCE.router(vertx));
+		router.mountSubRouter("/general", GeneralRouter.INSTANCE.router(vertx));
 	}
 }

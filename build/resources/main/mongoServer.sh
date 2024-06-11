@@ -1,0 +1,1 @@
+mongosh --host 10.0.3.6 --port 27017

@@ -1,0 +1,102 @@
+i[34m02:01:47.798[m [vert.x-eventloop-thread-0] [32mINFO [m com.moonlight.MainVerticle - config : { }
+Æ[34m02:01:47.824[m [vert.x-eventloop-thread-0] [32mINFO [m com.moonlight.MainVerticle - Deployed RxHttpRouter with Id Future{result=b2772507-5e43-4fee-a617-81dcdac8bd15}
+Ñ[34m02:01:47.836[m [ForkJoinPool.commonPool-worker-1] [1;31mERROR[m com.moonlight.MainVerticle - Error in initiating MySQL : {}
+%java.lang.NullPointerException: null
+`	at com.moonlight.factory.SqlBeanFactory.getDataSourceConfig(SqlBeanFactory.java:21) ~[main/:?]
+Y	at com.moonlight.factory.SqlBeanFactory.dbConnection(SqlBeanFactory.java:33) ~[main/:?]
+Q	at com.moonlight.factory.SqlBeanFactory.init(SqlBeanFactory.java:47) ~[main/:?]
+O	at com.moonlight.MainVerticle.lambda$start$4(MainVerticle.java:58) ~[main/:?]
+f	at java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1590) [?:1.8.0_202]
+g	at java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1582) [?:1.8.0_202]
+R	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289) [?:1.8.0_202]
+^	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056) [?:1.8.0_202]
+V	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692) [?:1.8.0_202]
+_	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157) [?:1.8.0_202]
+∆[34m02:01:47.909[m [vert.x-eventloop-thread-6] [33mWARN [m io.netty.channel.AbstractChannel - Force-closing a channel whose registration task was not accepted by an event loop: [id: 0xdf80b5eb]
+Kjava.util.concurrent.RejectedExecutionException: event executor terminated
+ê	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:926) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+ì	at io.netty.util.concurrent.SingleThreadEventExecutor.offerTask(SingleThreadEventExecutor.java:353) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+ë	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:346) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+ë	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:828) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+ë	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:818) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+à	at io.netty.channel.AbstractChannel$AbstractUnsafe.register(AbstractChannel.java:471) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+Ñ	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:87) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+Ñ	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:81) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+å	at io.netty.channel.MultithreadEventLoopGroup.register(MultithreadEventLoopGroup.java:86) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+Ü	at io.netty.bootstrap.AbstractBootstrap.initAndRegister(AbstractBootstrap.java:323) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+}	at io.netty.bootstrap.AbstractBootstrap.doBind(AbstractBootstrap.java:272) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+{	at io.netty.bootstrap.AbstractBootstrap.bind(AbstractBootstrap.java:268) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+Ü	at io.vertx.core.net.impl.AsyncResolveConnectHelper.lambda$doBind$2(AsyncResolveConnectHelper.java:58) ~[vertx-core-4.0.1.jar:4.0.1]
+}	at io.vertx.core.net.impl.AsyncResolveConnectHelper.doBind(AsyncResolveConnectHelper.java:71) ~[vertx-core-4.0.1.jar:4.0.1]
+f	at io.vertx.core.net.impl.TCPServerBase.listen(TCPServerBase.java:130) ~[vertx-core-4.0.1.jar:4.0.1]
+i	at io.vertx.core.http.impl.HttpServerImpl.listen(HttpServerImpl.java:209) ~[vertx-core-4.0.1.jar:4.0.1]
+i	at io.vertx.core.http.impl.HttpServerImpl.listen(HttpServerImpl.java:142) ~[vertx-core-4.0.1.jar:4.0.1]
+i	at io.vertx.core.http.impl.HttpServerImpl.listen(HttpServerImpl.java:156) ~[vertx-core-4.0.1.jar:4.0.1]
+i	at io.vertx.core.http.impl.HttpServerImpl.listen(HttpServerImpl.java:161) ~[vertx-core-4.0.1.jar:4.0.1]
+B	at com.moonlight.HttpRoutes.start(HttpRoutes.java:35) ~[main/:?]
+u	at io.vertx.core.impl.DeploymentManager.lambda$doDeploy$5(DeploymentManager.java:196) ~[vertx-core-4.0.1.jar:4.0.1]
+g	at io.vertx.core.impl.AbstractContext.dispatch(AbstractContext.java:96) ~[vertx-core-4.0.1.jar:4.0.1]
+g	at io.vertx.core.impl.AbstractContext.dispatch(AbstractContext.java:59) ~[vertx-core-4.0.1.jar:4.0.1]
+v	at io.vertx.core.impl.EventLoopContext.lambda$runOnContext$0(EventLoopContext.java:40) ~[vertx-core-4.0.1.jar:4.0.1]
+å	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164) [netty-common-4.1.52.Final.jar:4.1.52.Final]
+î	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472) [netty-common-4.1.52.Final.jar:4.1.52.Final]
+q	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:500) [netty-transport-4.1.52.Final.jar:4.1.52.Final]
+é	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989) [netty-common-4.1.52.Final.jar:4.1.52.Final]
+{	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) [netty-common-4.1.52.Final.jar:4.1.52.Final]
+á	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) [netty-common-4.1.52.Final.jar:4.1.52.Final]
+8	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_202]
+¬[34m02:01:47.913[m [vert.x-eventloop-thread-6] [1;31mERROR[m io.netty.util.concurrent.DefaultPromise.rejectedExecution - Failed to submit a listener notification task. Event loop shut down?
+Kjava.util.concurrent.RejectedExecutionException: event executor terminated
+ê	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:926) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+ì	at io.netty.util.concurrent.SingleThreadEventExecutor.offerTask(SingleThreadEventExecutor.java:353) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+ë	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:346) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+ë	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:828) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+ë	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:818) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.util.concurrent.DefaultPromise.safeExecute(DefaultPromise.java:841) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+É	at io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:498) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+	at io.netty.util.concurrent.DefaultPromise.addListener(DefaultPromise.java:183) ~[netty-common-4.1.52.Final.jar:4.1.52.Final]
+á	at io.netty.channel.DefaultChannelPromise.addListener(DefaultChannelPromise.java:95) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+á	at io.netty.channel.DefaultChannelPromise.addListener(DefaultChannelPromise.java:30) ~[netty-transport-4.1.52.Final.jar:4.1.52.Final]
+Ü	at io.vertx.core.net.impl.AsyncResolveConnectHelper.lambda$doBind$2(AsyncResolveConnectHelper.java:59) ~[vertx-core-4.0.1.jar:4.0.1]
+}	at io.vertx.core.net.impl.AsyncResolveConnectHelper.doBind(AsyncResolveConnectHelper.java:71) ~[vertx-core-4.0.1.jar:4.0.1]
+f	at io.vertx.core.net.impl.TCPServerBase.listen(TCPServerBase.java:130) ~[vertx-core-4.0.1.jar:4.0.1]
+i	at io.vertx.core.http.impl.HttpServerImpl.listen(HttpServerImpl.java:209) ~[vertx-core-4.0.1.jar:4.0.1]
+i	at io.vertx.core.http.impl.HttpServerImpl.listen(HttpServerImpl.java:142) ~[vertx-core-4.0.1.jar:4.0.1]
+i	at io.vertx.core.http.impl.HttpServerImpl.listen(HttpServerImpl.java:156) ~[vertx-core-4.0.1.jar:4.0.1]
+i	at io.vertx.core.http.impl.HttpServerImpl.listen(HttpServerImpl.java:161) ~[vertx-core-4.0.1.jar:4.0.1]
+B	at com.moonlight.HttpRoutes.start(HttpRoutes.java:35) ~[main/:?]
+u	at io.vertx.core.impl.DeploymentManager.lambda$doDeploy$5(DeploymentManager.java:196) ~[vertx-core-4.0.1.jar:4.0.1]
+g	at io.vertx.core.impl.AbstractContext.dispatch(AbstractContext.java:96) ~[vertx-core-4.0.1.jar:4.0.1]
+g	at io.vertx.core.impl.AbstractContext.dispatch(AbstractContext.java:59) ~[vertx-core-4.0.1.jar:4.0.1]
+v	at io.vertx.core.impl.EventLoopContext.lambda$runOnContext$0(EventLoopContext.java:40) ~[vertx-core-4.0.1.jar:4.0.1]
+å	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164) [netty-common-4.1.52.Final.jar:4.1.52.Final]
+î	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472) [netty-common-4.1.52.Final.jar:4.1.52.Final]
+q	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:500) [netty-transport-4.1.52.Final.jar:4.1.52.Final]
+é	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989) [netty-common-4.1.52.Final.jar:4.1.52.Final]
+{	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) [netty-common-4.1.52.Final.jar:4.1.52.Final]
+á	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) [netty-common-4.1.52.Final.jar:4.1.52.Final]
+8	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_202]
+i[34m02:01:47.965[m [vert.x-eventloop-thread-0] [32mINFO [m com.moonlight.MainVerticle - config : { }
+Æ[34m02:01:47.969[m [vert.x-eventloop-thread-0] [32mINFO [m com.moonlight.MainVerticle - Deployed RxHttpRouter with Id Future{result=4d8ba661-4ff0-4764-a05d-fb7562c9fd4d}
+Ñ[34m02:01:47.969[m [ForkJoinPool.commonPool-worker-1] [1;31mERROR[m com.moonlight.MainVerticle - Error in initiating MySQL : {}
+%java.lang.NullPointerException: null
+`	at com.moonlight.factory.SqlBeanFactory.getDataSourceConfig(SqlBeanFactory.java:21) ~[main/:?]
+Y	at com.moonlight.factory.SqlBeanFactory.dbConnection(SqlBeanFactory.java:33) ~[main/:?]
+Q	at com.moonlight.factory.SqlBeanFactory.init(SqlBeanFactory.java:47) ~[main/:?]
+O	at com.moonlight.MainVerticle.lambda$start$4(MainVerticle.java:58) ~[main/:?]
+f	at java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1590) [?:1.8.0_202]
+g	at java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1582) [?:1.8.0_202]
+R	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289) [?:1.8.0_202]
+^	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056) [?:1.8.0_202]
+V	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692) [?:1.8.0_202]
+_	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157) [?:1.8.0_202]
+}[34m02:01:47.985[m [vert.x-eventloop-thread-6] [32mINFO [m com.moonlight.HttpRoutes - HTTP server started on port : 9090
+}[34m02:01:47.985[m [vert.x-eventloop-thread-5] [32mINFO [m com.moonlight.HttpRoutes - HTTP server started on port : 9090
+}[34m02:01:47.986[m [vert.x-eventloop-thread-7] [32mINFO [m com.moonlight.HttpRoutes - HTTP server started on port : 9090
+}[34m02:01:47.985[m [vert.x-eventloop-thread-2] [32mINFO [m com.moonlight.HttpRoutes - HTTP server started on port : 9090
+}[34m02:01:47.985[m [vert.x-eventloop-thread-1] [32mINFO [m com.moonlight.HttpRoutes - HTTP server started on port : 9090
+}[34m02:01:47.985[m [vert.x-eventloop-thread-8] [32mINFO [m com.moonlight.HttpRoutes - HTTP server started on port : 9090
+}[34m02:01:47.985[m [vert.x-eventloop-thread-3] [32mINFO [m com.moonlight.HttpRoutes - HTTP server started on port : 9090
+}[34m02:01:47.986[m [vert.x-eventloop-thread-4] [32mINFO [m com.moonlight.HttpRoutes - HTTP server started on port : 9090
+¨[34m02:01:47.990[m [vert.x-eventloop-thread-0] [32mINFO [m com.moonlight.MainVerticle - Deployed HttpRoutes with Id Future{result=fc4cba16-12d9-43b2-93f3-c10ac4b5dec7}
+{"id":101,"name":"Chandradip"}

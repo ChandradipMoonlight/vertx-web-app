@@ -1,11 +1,12 @@
 package com.moonlight;
 
 import com.moonlight.config.ConfigManager;
+import com.moonlight.factory.MongoFactory;
 import com.moonlight.factory.SqlBeanFactory;
-import io.vertx.core.AbstractVerticle;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Promise;
-import io.vertx.core.Vertx;
+import io.vertx.rxjava.core.AbstractVerticle;
+import io.vertx.rxjava.core.Vertx;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,7 +18,7 @@ public class MainVerticle extends AbstractVerticle {
   public static final int PORT = 8888;
 
   public static void main(String[] args) {
-    final Vertx vertx = Vertx.vertx();
+    Vertx vertx = Vertx.vertx();
     vertx.exceptionHandler(error -> log.error("error : {}", error.getMessage()));
     vertx.deployVerticle(MainVerticle.class.getName(), ar -> {
       if (ar.failed()) {
@@ -43,7 +44,7 @@ public class MainVerticle extends AbstractVerticle {
                 }
               });
     vertx.deployVerticle(RxHttpRouter.class.getName(),
-            new DeploymentOptions().setInstances(2),
+            new DeploymentOptions().setInstances(getProcessors()),
             completionHandler -> {
               if (completionHandler.succeeded()) {
                 log.info("Deployed {} with Id {}", RxHttpRouter.class.getSimpleName(), completionHandler);
@@ -55,8 +56,9 @@ public class MainVerticle extends AbstractVerticle {
     CompletableFuture.supplyAsync(() -> {
       try {
         SqlBeanFactory.INSTANCE.init();
+        MongoFactory.INSTANCE.init(vertx);
       }catch (Exception e) {
-        log.error("Error in initiating MySQL : {}", e.getMessage());
+        log.error("Error in initiating MySQL : {}", e);
       }
       return null;
     });

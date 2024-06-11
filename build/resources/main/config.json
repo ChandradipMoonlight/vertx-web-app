@@ -8,6 +8,10 @@
     "url": "jdbc:mysql://localhost/mydb",
     "password": "Dipak@11"
   },
+  "mongo" : {
+    "host" : "127.0.0.1",
+    "port" : 27017
+  },
   "external" : {
     "genderize" : {
       "baseUrl" : "https://api.genderize.io"

@@ -21,4 +21,8 @@ public enum ConfigHelper {
 	public JsonObject getAuthConfig() {
 		return ConfigManager.INSTANCE.getMainConfig().getJsonObject("auth");
 	}
+
+	public JsonObject getMongoConfig() {
+		return ConfigManager.INSTANCE.getMainConfig().getJsonObject("mongo");
+	}
 }

@@ -1,6 +1,5 @@
 package com.moonlight.controller;
 
-import com.moonlight.utils.ResponseUtils;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.HttpHeaders;
 import io.vertx.ext.web.RoutingContext;
@@ -82,8 +81,7 @@ public enum HtmlToPdfController implements CommonController {
 				.putHeader(HttpHeaders.CONTENT_TYPE, "application/pdf")
 				.putHeader(HttpHeaders.CONTENT_LENGTH, String.valueOf(pdfFile.length()))
 				.putHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"downloaded_pdf.pdf\"")
-				.write(buffer)
-				.end();
+				.write(buffer);
 
 		// Delete the temporary PDF file
 		if (pdfFile != null && pdfFile.exists()) {

@@ -43,7 +43,8 @@ dependencies {
   implementation("io.vertx:vertx-web")
 //  implementation("io.vertx:vertx-mysql-client")
   implementation("io.vertx:vertx-rx-java:3.8.1")
-//  implementation("io.vertx:vertx-mongo-client")
+  implementation("io.vertx:vertx-mongo-client:3.8.1")
+
   testImplementation("io.vertx:vertx-junit5")
   testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
   // https://mvnrepository.com/artifact/org.slf4j/slf4j-api

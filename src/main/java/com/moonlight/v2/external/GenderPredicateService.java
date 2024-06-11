@@ -1,13 +1,10 @@
 package com.moonlight.v2.external;
 
-import com.moonlight.admin.user.NewCommonController;
 import com.moonlight.config.ConfigHelper;
-import com.moonlight.controller.CommonController;
 import com.moonlight.exception.RoutingError;
 import com.moonlight.external.ApiClientManager;
 import com.moonlight.external.GenderizeService;
 import com.moonlight.external.PredicateGenderResponse;
-import io.vertx.rxjava.ext.web.RoutingContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import retrofit2.Response;
