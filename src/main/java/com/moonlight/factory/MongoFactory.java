@@ -12,7 +12,10 @@ import org.slf4j.LoggerFactory;
 import rx.Single;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public enum MongoFactory {
 	INSTANCE;
@@ -26,7 +29,7 @@ public enum MongoFactory {
 		try {
 			client = MongoClient.createShared(vertx, ConfigHelper.INSTANCE.getMongoConfig());
 			log.info("Mongo Client initiated");
-
+			System.out.println(client.toString());
 		} catch (Exception e) {
 			log.error("Error in Creating MongoClient : {}", e);
 		}
@@ -142,6 +145,18 @@ public enum MongoFactory {
 					singleSubscriber.onError(handler.cause());
 				}
 			});
+		});
+	}
+	public Single<List<HashMap<String, String>>> searchResults(String table, JsonObject object) {
+		return findAll(table, object).map(jsonObjects -> {
+			return jsonObjects.stream()
+					.map(jsonObject -> {
+						HashMap<String, String> map = new HashMap<>();
+						for (Map.Entry<String, Object> stringObjectEntry : jsonObject) {
+							map.put(stringObjectEntry.getKey(), stringObjectEntry.getValue().toString());
+						}
+						return map;
+					}).filter(stringStringHashMap -> !stringStringHashMap.isEmpty()).limit(30).collect(Collectors.toList());
 		});
 	}
 }

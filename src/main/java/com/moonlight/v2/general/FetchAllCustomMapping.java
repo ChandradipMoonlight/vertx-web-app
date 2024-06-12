@@ -10,6 +10,7 @@ import com.moonlight.models.mongo.CustomFieldMapping;
 import com.moonlight.utils.ResponseUtils;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
+import io.vertx.rxjava.core.RxHelper;
 import io.vertx.rxjava.ext.web.RoutingContext;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,6 +32,7 @@ public enum FetchAllCustomMapping implements NewCommonController {
 	@Override
 	public void handle(RoutingContext context) {
 		Single.just(context)
+				.subscribeOn(RxHelper.blockingScheduler(context.vertx()))
 				.flatMap(this::doNext)
 				.subscribe(
 						response -> ResponseUtils.INSTANCE.writeJsonResponse(context, response),
@@ -40,8 +42,10 @@ public enum FetchAllCustomMapping implements NewCommonController {
 
 	private Single<Response> doNext(RoutingContext context) {
 		JsonObject bodyAsJson = context.getBodyAsJson();
+		Response response  = new Response();
 		System.out.println("Json Request : {}"+ bodyAsJson);
 		Request request = new Gson().fromJson(bodyAsJson.encode(), Request.class);
+		testMongoResult();
 		if (request.getData()==null) {
 			bodyAsJson.getMap().forEach((k, v) -> {
 				request.getData().put(k, (String) v);
@@ -53,12 +57,12 @@ public enum FetchAllCustomMapping implements NewCommonController {
 
 	private Single<List<CustomFieldMapping>> fetchMappings(Request request) {
 		log.info("Request : {}", request);
-		JsonObject query = query(request);
+		JsonObject query = query1(request);
 		return MongoFactory.INSTANCE.findAll(Collections.CUSTOM_FIELD_MAPPING, query)
 				.map(jsonObjectList -> {
 					log.info("Response : {}", Arrays.toString(jsonObjectList.toArray()));
 					return jsonObjectList.stream()
-							.map(jsonObject -> jsonObject.mapTo(CustomFieldMapping.class))
+							.map(jsonObject -> new Gson().fromJson(jsonObject.encode(), CustomFieldMapping.class))
 							.collect(Collectors.toList());
 				}).doOnError(error -> log.error("Error : {}", error));
 	}
@@ -85,9 +89,19 @@ public enum FetchAllCustomMapping implements NewCommonController {
 
 	private JsonObject query(Request request) {
 		JsonObject query = new JsonObject();
-		query.put(COMPANY_ID, request.companyId);
+//		query.put(COMPANY_ID, request.companyId);
 		return query;
 	}
+
+	private static void testMongoResult() {
+		MongoFactory.INSTANCE.getMongoClient()
+				.rxFind(Collections.CUSTOM_FIELD_MAPPING, new JsonObject().put(COMPANY_ID, 1887))
+				.subscribe(
+						response -> System.out.println("Test Result : "+response.size()),
+						error -> System.out.println("error in test : "+error.getMessage())
+				);
+	}
+
 
 	@NoArgsConstructor
 	@Data
@@ -104,6 +118,7 @@ public enum FetchAllCustomMapping implements NewCommonController {
 	@AllArgsConstructor
 	private static class Response {
 		List<CustomFieldMapping> mappings = new ArrayList<>();
+//		List<Long> mappings = new ArrayList<>();
 	}
 
 }

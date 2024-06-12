@@ -10,7 +10,12 @@
   },
   "mongo" : {
     "host" : "127.0.0.1",
-    "port" : 27017
+    "port" : 27017,
+    "db_name" : "test"
+  },
+  "mongo_cluster": {
+    "connection_string": "mongodb+srv://moonlight11:<password>@moonlight-cluster-1.fn426i3.mongodb.net/?retryWrites=true&w=majority&appName=moonlight-cluster-1",
+    "db_name": "test"
   },
   "external" : {
     "genderize" : {
