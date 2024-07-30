@@ -11,6 +11,7 @@ public enum MountEmployeeRouter implements SubRouter {
 	public Router router(Vertx vertx) {
 		Router router = Router.router(vertx);
 		router.get("/:id/updateGender").handler(UpdateEmployeeGender.INSTANCE::handle);
+		router.get("/checkInstance").handler(EmployeeStatisticController.INSTANCE::handle);
 		return router;
 	}
 }
