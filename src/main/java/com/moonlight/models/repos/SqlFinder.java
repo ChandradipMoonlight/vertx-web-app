@@ -9,7 +9,7 @@ import java.util.List;
 
 public class SqlFinder<T, I> {
 
-	private Class<T> tClass;
+	private Class<T> tClass; // Address.class
 	public SqlFinder(Class<T> tClass) {
 		this.tClass = tClass;
 	}

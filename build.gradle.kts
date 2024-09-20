@@ -94,5 +94,9 @@ tasks.withType<Test> {
 }
 
 tasks.withType<JavaExec> {
-  args = listOf("run", mainVerticleName, "-conf /Users/macbook/workspace/pratice/vertx-web-app/src/main/resources/config.json","--redeploy=$watchForChange", "--launcher-class=$launcherClassName", "--on-redeploy=$doOnChange")
+  args = listOf("run", mainVerticleName,
+    "-conf /Users/moonlight/workspace/practice/vertx-web-app/src/main/resources/config.json",
+    "--redeploy=$watchForChange",
+    "--launcher-class=$launcherClassName",
+    "--on-redeploy=$doOnChange")
 }

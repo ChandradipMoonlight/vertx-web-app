@@ -13,9 +13,11 @@ import io.vertx.rxjava.ext.web.RoutingContext;
 import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import rx.Observable;
 import rx.Single;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public enum RegisterUser implements NewCommonController {
@@ -29,10 +31,8 @@ public enum RegisterUser implements NewCommonController {
 				.subscribeOn(RxHelper.blockingScheduler(context.vertx()))
 				.map(this::doNext)
 				.subscribe(
-						response -> {
-							ResponseUtils.INSTANCE.writeJsonResponse(context, response);
-						},
-						error -> ResponseUtils.INSTANCE.handleException(context, error)
+          response -> ResponseUtils.INSTANCE.writeJsonResponse(context, response),
+          error -> ResponseUtils.INSTANCE.handleException(context, error)
 				);
 	}
 	private Response doNext(RoutingContext context) {
@@ -100,4 +100,13 @@ public enum RegisterUser implements NewCommonController {
 		}
 		return users;
 	}
+
+  private void test(){
+    Observable.just("abc").map(s -> s.toUpperCase(Locale.ROOT))
+      .subscribe(
+//        success -> System.out.println(success),
+        System.out::println,
+        error -> System.out.println(error.getMessage())
+      );
+  }
 }
