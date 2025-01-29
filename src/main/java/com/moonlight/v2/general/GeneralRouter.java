@@ -11,6 +11,7 @@ public enum GeneralRouter implements SubRouter {
 	public Router router(Vertx vertx) {
 		Router router = Router.router(vertx);
 		router.post("/customFields").handler(FetchAllCustomMapping.INSTANCE::handle);
+    router.get("/customFields/search").handler(SearchCustomFieldsValuesController.INSTANCE::handle);
 		return router;
 	}
 }

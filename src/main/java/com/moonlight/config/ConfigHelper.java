@@ -23,6 +23,6 @@ public enum ConfigHelper {
 	}
 
 	public JsonObject getMongoConfig() {
-		return ConfigManager.INSTANCE.getMainConfig().getJsonObject("mongo");
+		return ConfigManager.INSTANCE.getMainConfig().getJsonObject("mongo1");
 	}
 }
